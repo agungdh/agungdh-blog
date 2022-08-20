@@ -1,17 +1,18 @@
+import { useStore } from '@nanostores/react'
+import { sitePath, siteUrl } from '../siteStore'
+
 import HeaderMenuItem from '../components/HeaderMenuItem'
 
-interface props {
-  currentSitePath: string;
-}
+export default function Header() {
+  const $sitePath = useStore(sitePath)
+  const $siteUrl = useStore(siteUrl)
 
-export default function Header(props:props) {
   return (
     <header>
         <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
             <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-                <a href="#" className="flex items-center">
-                    <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-                    <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                <a href={$siteUrl} className="flex items-center">
+                    <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">AgungDH's Blog</span>
                 </a>
                 <div className="flex items-center lg:order-2">
                     <button data-collapse-toggle="mobile-menu-2" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
@@ -22,7 +23,7 @@ export default function Header(props:props) {
                 </div>
                 <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                     <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                        <HeaderMenuItem url='/' text='Home' active={props.currentSitePath == '/' ? true : false} />
+                        <HeaderMenuItem url='/' text='Home' active={$sitePath == '/' ? true : false} />
                         <HeaderMenuItem url='/categories' text='Categories' />
                         <HeaderMenuItem url='/tags' text='Tags' />
                     </ul>

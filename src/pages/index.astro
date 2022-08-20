@@ -1,5 +1,13 @@
 ---
-import Header from '../components/Header.jsx';
+import { siteUrl, sitePath } from '../siteStore';
+
+import Header from '../components/Header.jsx'
+import Footer from '../components/Footer.jsx'
+
+siteUrl.set(import.meta.env.PROD ? Astro.site : 'http://localhost:3000')
+sitePath.set(Astro.url.pathname)
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 ---
 
 <!DOCTYPE html>
@@ -18,10 +26,13 @@ import Header from '../components/Header.jsx';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
     <title>Document</title>
 </head>
 <body>
-    <Header currentSitePath={Astro.url.pathname} />
+    <Header />
+
+    <Footer />
 
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
 </body>

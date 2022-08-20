@@ -1,7 +1,7 @@
 interface props {
-    url: string;
-    text: string;
-    active?: boolean;
+    url: string
+    text: string
+    active?: boolean
 }
 
 export default function HeaderMenuItem(props:props) {
