@@ -23,7 +23,6 @@ export default function Header(props:props) {
                 <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                     <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                         <HeaderMenuItem url='/' text='Home' active={props.currentSitePath == '/' ? true : false} />
-                        <HeaderMenuItem url='/about' text='About' />
                         <HeaderMenuItem url='/categories' text='Categories' />
                         <HeaderMenuItem url='/tags' text='Tags' />
                     </ul>
