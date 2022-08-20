@@ -2,7 +2,11 @@
 import Header from '../components/Header.jsx'
 import Footer from '../components/Footer.jsx'
 
-const siteUrl = import.meta.env.PROD ? Astro.site : 'http://localhost:3000'
+const removeTrailingSlash = (str: any) => {
+  return str.replace(/\/+$/, '');
+}
+
+const siteUrl = import.meta.env.PROD ? removeTrailingSlash(Astro.site.toString()) : 'http://localhost:3000'
 const sitePath = Astro.url.pathname
 const canonicalURL = new URL(sitePath, siteUrl)
 ---
