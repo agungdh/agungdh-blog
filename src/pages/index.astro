@@ -1,13 +1,10 @@
 ---
-import { siteUrl, sitePath } from '../siteStore';
-
 import Header from '../components/Header.jsx'
 import Footer from '../components/Footer.jsx'
 
-siteUrl.set(import.meta.env.PROD ? Astro.site : 'http://localhost:3000')
-sitePath.set(Astro.url.pathname)
-
-const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const siteUrl = import.meta.env.PROD ? Astro.site : 'http://localhost:3000'
+const sitePath = Astro.url.pathname
+const canonicalURL = new URL(sitePath, siteUrl)
 ---
 
 <!DOCTYPE html>
@@ -30,10 +27,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     <title>Document</title>
 </head>
 <body>
-    <Header />
+    <Header siteUrl={siteUrl} sitePath={sitePath} />
 
-    <Footer />
-
+    <Footer siteUrl={siteUrl} />
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
 </body>
 </html>

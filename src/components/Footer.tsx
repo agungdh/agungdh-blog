@@ -1,15 +1,14 @@
-import { useStore } from '@nanostores/react'
-import { siteUrl } from '../siteStore'
+interface props {
+    siteUrl: string
+}
 
-export default function Footer() {
-  const $siteUrl = useStore(siteUrl)
-
+export default function Footer(props:props) {
   return (
     <footer className="text-gray-600 body-font">
         <div className="bg-gray-100">
             <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
             <p className="text-gray-500 text-sm text-center sm:text-left">© {new Date().getFullYear()}
-                <a href={$siteUrl} className="text-gray-600 ml-1">AgungDH</a>
+                <a href={props.siteUrl} className="text-gray-600 ml-1">AgungDH</a>
             </p>
             <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
                 <a className="text-gray-500">
